@@ -1,7 +1,18 @@
+body{
+    height: 100vh;
+}
+main{
+    min-height: 80vh;
+}
+header{
+    height:10vh;
+}
+footer{
+    height: 10vh;
+}
 .logo{
     height: 20px;
 }
-
 .carousel-item>img{
     height: 10rem;
     object-fit: cover;
