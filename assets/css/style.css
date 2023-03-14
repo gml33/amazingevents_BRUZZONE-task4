@@ -1,0 +1,182 @@
+.logo{
+    height: 20px;
+}
+
+.carousel-item>img{
+    height: 10rem;
+    object-fit: cover;
+    object-position: 25% 15%;
+}
+.formulario{
+    margin-top: 1%;
+    margin-bottom: 1%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.formulario_1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.formulario_1 div{
+    margin: 10px;
+}
+
+.card{
+    margin-bottom: 1rem;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cards{
+    padding: 1%;
+    margin-bottom: 2%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.cards img{
+    height: 168px;
+}
+.navigation{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.cohorte{
+    font-size: xx-large;
+}
+.centrado > button{
+    margin-top: 1%;
+}
+.contenido_details{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.detalle{
+    min-height: fit-content;
+    height: 60vh;
+    min-width: fit-content;
+    width: 100%;
+    margin-top: 1%;
+    border-radius: 3%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.imagen_detalle{
+    min-width: 278px;
+    width: 40%;
+    height: 75%;
+}
+.imagen_detalle>img{
+    height: 100%;
+    width: 100%;
+    box-shadow: 1px 1px;
+    border: 1px solid gray;
+    border-radius: 5%;
+    margin: 1%;
+    object-fit: cover;    
+}
+.detalle_evento{
+    border: 1px solid gray;
+    padding: 3%;
+    border-radius: 3%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1%;
+    max-width: 40%;
+    min-width: 278px;
+    height: 75%;
+}
+.contenido_stats{
+    margin-bottom: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tarjeta{
+    border: 1px solid rgba(0, 0, 0, 0.175);
+    border-radius: 0.375rem;
+    min-height: 446px;
+    height:fit-content;
+    width: 278px;
+    display: flex;
+    flex-direction: column;
+}
+
+.img_tarjeta{
+    width: 100%;
+    min-height: 168px;
+    height: 36%;
+    border-top-left-radius:0.375rem;
+    border-top-right-radius: 0.375rem;
+}
+.cuerpo_tarjeta{
+    width: 100%;
+    height: max-content;
+    max-height: 64%;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+.precio_tarjeta{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:center;
+}
+.precio_tarjeta>button>a{
+    color: white;
+}
+
+.ad{
+    background-position: center center;
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+.ad2{
+    background-image: url(../img/Museum_Tour.jpg);
+    background-position: center center;
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+.ad3{
+    background-image: url(../img/Music_Concert.jpg);
+    background-position: center center;
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+.ad4{
+    background-image: url(../img/Food_Fair.jpg);
+    background-position: center center;
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+.no_hay_un_porongo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
