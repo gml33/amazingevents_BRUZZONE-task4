@@ -1,4 +1,4 @@
-import { crearCards, crearCheckBoxes, createCategories, filtroArray, mensaje, filtraPorFecha} from './helpers.js';
+import { crearCards, crearCheckBoxes, createCategories, filtroArray, mensaje, filtraPorFechaPasado} from './helpers.js';
 
 let data = [];
 
