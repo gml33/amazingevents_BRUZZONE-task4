@@ -1,6 +1,22 @@
 
 let categories = "";
 
+/*Funcion para filtrar los eventos segun la fecha*/
+export const filtraPorFechaPasado=(array)=>{
+    let fecha_actual = new Date('2022,01,01');
+    let eventosFiltradosPorFecha=[]
+    array.forEach((evento)=>{
+      let anno_evento = evento.date.split('-')[0]
+      let mes_evento = evento.date.split('-')[1]
+      let dia_evento = evento.date.split('-')[2]
+      let fecha_evento = new Date(anno_evento, mes_evento, dia_evento)
+      if(fecha_evento.getTime()<fecha_actual.getTime()){
+        eventosFiltradosPorFecha.push(evento)
+      }
+    })
+    return eventosFiltradosPorFechaPasada
+    }
+
 /*funcion para crear las categorias de los checkboxes desde el Json*/
 export const createCategories = (array)=>{
     let items = [];
