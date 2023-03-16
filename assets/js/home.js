@@ -49,7 +49,6 @@ buscador.addEventListener('input',()=>{
   if(listaChecked.length>0){
     datos = filtroArray(data.events, elementos)
   }
-  console.log(datos);
   datos.forEach(element => {    
     if(element.name.toLowerCase().includes(buscador.value.toLowerCase())){
       datafiltrada.push(element);

@@ -1,21 +1,39 @@
 
 let categories = "";
+let array = {};
+let event = {};
 
 /*Funcion para filtrar los eventos segun la fecha*/
 export const filtraPorFechaPasado=(array)=>{
     let fecha_actual = new Date('2022,01,01');
-    let eventosFiltradosPorFecha=[]
-    array.forEach((evento)=>{
-      let anno_evento = evento.date.split('-')[0]
-      let mes_evento = evento.date.split('-')[1]
-      let dia_evento = evento.date.split('-')[2]
-      let fecha_evento = new Date(anno_evento, mes_evento, dia_evento)
-      if(fecha_evento.getTime()<fecha_actual.getTime()){
-        eventosFiltradosPorFecha.push(evento)
-      }
+    let eventosPasado=[]
+    array.events.forEach((evento)=>{
+        let anno_evento = evento.date.split('-')[0]
+        let mes_evento = evento.date.split('-')[1]
+        let dia_evento = evento.date.split('-')[2]
+        let fecha_evento = new Date(anno_evento, mes_evento, dia_evento)
+        if(fecha_evento.getTime()<fecha_actual.getTime()){
+            eventosPasado.push(evento)
+        }
     })
-    return eventosFiltradosPorFechaPasada
-    }
+    return eventosPasado
+}
+
+/*Funcion para filtrar los eventos segun la fecha*/
+export const filtraPorFechaFuturo=(array)=>{
+    let fecha_actual = new Date('2022,01,01');
+    let eventosFuturo=[]
+    array.events.forEach((evento)=>{
+        let anno_evento = evento.date.split('-')[0]
+        let mes_evento = evento.date.split('-')[1]
+        let dia_evento = evento.date.split('-')[2]
+        let fecha_evento = new Date(anno_evento, mes_evento, dia_evento)
+        if(fecha_evento.getTime()>fecha_actual.getTime()){
+            eventosFuturo.push(evento)
+        }
+    })
+    return eventosFuturo
+}
 
 /*funcion para crear las categorias de los checkboxes desde el Json*/
 export const createCategories = (array)=>{
@@ -27,6 +45,7 @@ export const createCategories = (array)=>{
     })
     return items;
 }
+
 /*funcion para crear las crearCards desde el array que le mande*/
 let fragmento = document.createDocumentFragment();
 export const crearCards = (array, containerCard)=>{
@@ -90,4 +109,27 @@ export const mensaje = (containerCard)=>{
     div.innerHTML += `<h1>Nada que ver lo que estas buscando</h1>`
     fragmento2.appendChild(div);
     containerCard.appendChild(fragmento2);
+}
+
+let fragmento3 = document.createDocumentFragment();
+export const detalleEvento=(event, containerEvento)=>{    
+    containerEvento.innerHTML=''
+    let div = document.createElement("div");
+    div.className = "detalle"
+    div.innerHTML += `<div class="imagen_detalle">
+                        <img src="${event.image}" alt="Detalle Evento">
+                    </div>
+                    <div class="detalle_evento">
+                        <h2>${event.name}</h2>
+                        <p>Date: ${event.date}</p>
+                        <p>${event.description}</p>
+                        <p>Category: ${event.category}</p>
+                        <p>Place: ${event.place}</p>
+                        <p>Capacity: ${event.capacity} people</p>
+                        <p>Estimate: ${event.estimate}</p>
+                        <p>Price: ${event.price}U$D</p>
+                    </div>`
+
+    fragmento3.appendChild(div)
+    containerEvento.appendChild(fragmento3);
 }
