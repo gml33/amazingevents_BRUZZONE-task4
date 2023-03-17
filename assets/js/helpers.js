@@ -133,3 +133,7 @@ export const detalleEvento=(event, containerEvento)=>{
     fragmento3.appendChild(div)
     containerEvento.appendChild(fragmento3);
 }
+
+
+
+
