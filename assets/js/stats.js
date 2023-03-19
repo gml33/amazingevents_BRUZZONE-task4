@@ -1,4 +1,4 @@
-import {filtraPorFechaFuturo, detalleEvento, filtraPorFechaPasado} from './helpers.js';
+import {filtraPorFechaFuturo, filtraPorFechaPasado} from './helpers.js';
 
 let data = [];
 
@@ -12,10 +12,12 @@ async function getData(){
         const response = await fetch(apiUrl);
         data = await response.json();        
         let upcomingEvents = filtraPorFechaFuturo(data);
+        //hasta aca bien, filtra los eventos por upcoming 
+        let upcomingE=upcomingEventsAssistanceRevenues(upcomingEvents)
+        //hasta aca ok, devuelve un objeto con con la categoria, los revenues y el porcentaje de attendance basado en los estimados
         let pastEvents = filtraPorFechaPasado(data);
-        //hasta aca bien, filtra los eventos por upcoming y past
-        let ganancias=eventosFiltradosPorCategorias(upcomingEvents)
-
+        //hasta aca bien, filtra los eventos por upcoming
+        let pastE = pastEventsAssistanceRevenues(pastEvents)
     } catch (error) {
         console.log(error);
     }
@@ -23,7 +25,49 @@ async function getData(){
 
 getData();
 
-let eventosFiltradosPorCategorias=(arrayEventos)=>{
+let upcomingEventsAssistanceRevenues=(arrayEventos)=>{
+    let values = {};
+    let categorias = [];
+    let i = 0;
+    let j=0;
+    let monto = 0;
+    let estimado = 0;
+    let capacidad = 0;
+    let attendance = 0;
+    //itero sobre el array de eventos para obtener las categorias
+    arrayEventos.forEach((evento)=>{
+        let categoriaEvento = evento.category;
+        categorias.push(categoriaEvento);
+    });
+    //hago un set sobre el resultado, para eliminar duplicados
+    categorias = new Set(categorias)
+    //transformo un set en un array
+    categorias = [...categorias]
+    //itero sobre el array de las categorias
+    for(i=0;i<categorias.length;i++){
+        //inicializo la variable del monto        
+        monto = 0;
+        attendance = 0;
+        capacidad = 0;
+        estimado = 0;
+        //itero sobre el array de eventos
+        for(j=0;j<arrayEventos.length;j++){           
+            if(arrayEventos[j].category && arrayEventos[j].price && arrayEventos[j].estimate && arrayEventos[j].capacity){
+                if(categorias[i]==arrayEventos[j].category){                                   
+                    estimado = estimado + arrayEventos[j].estimate;
+                    monto = monto+arrayEventos[j].price*arrayEventos[j].estimate;
+                    capacidad = capacidad + arrayEventos[j].capacity;
+                }
+            }            
+        }
+        attendance = 100*(estimado/capacidad);
+        values[i] = {'category':categorias[i],'revenue':monto, 'attendance':attendance};
+    }
+    console.log(values);
+}
+
+
+let pastEventsAssistanceRevenues=(arrayEventos)=>{
     let values = {};
     let categorias = [];
     let i = 0;

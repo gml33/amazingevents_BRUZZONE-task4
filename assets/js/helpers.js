@@ -5,7 +5,7 @@ let event = {};
 
 /*Funcion para filtrar los eventos segun la fecha*/
 export const filtraPorFechaPasado=(array)=>{
-    let fecha_actual = new Date('2022,01,01');
+    let fecha_actual = new Date('2023,03,19');
     let eventosPasado=[]
     array.events.forEach((evento)=>{
         let anno_evento = evento.date.split('-')[0]
