@@ -1,4 +1,6 @@
-import {filtraPorFechaFuturo, filtraPorFechaPasado, upcomingEventsAssistanceRevenues,pastEventsAssistanceRevenues} from './helpers.js';
+import {filtraPorFechaFuturo, filtraPorFechaPasado, upcomingEventsAssistanceRevenues,pastEventsAssistanceRevenues, tabla} from './helpers.js';
+const $tabla1 = document.getElementById('tablaUpcomingEvents');
+const $tabla2 = document.getElementById('tablaPastEvents');
 
 let data = [];
 
@@ -15,19 +17,11 @@ async function getData(){
         let upcomingE=upcomingEventsAssistanceRevenues(upcomingEvents)
         let pastEvents = filtraPorFechaPasado(data);
         let pastE = pastEventsAssistanceRevenues(pastEvents)
-        let pipi = filaUpcomingEvents(upcomingE)
+        tabla(upcomingE, $tabla1)
+        tabla(pastE, $tabla2)
     } catch (error) {
         console.log(error);
     }
 }
 
 getData();
-
-const filaUpcomingEvents=(array)=>{
-    let filaUpcoming = document.getElementById('upcoming');
-    let fila =``;
-    for(let i=0;i<array.length;i++){
-        fila = fila + `<tr><td>${array.category[i]}</td><td>${array.revenue[i]}</td><td>${array.attendance[i]}</td></tr>`;
-    }
-    filaUpcoming.appendChild(fila);
-}

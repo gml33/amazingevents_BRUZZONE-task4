@@ -220,3 +220,17 @@ export const pastEventsAssistanceRevenues=(arrayEventos)=>{
     }
     return values
 }
+
+
+const fragment7 = document.createDocumentFragment();
+export const tabla =(array, container)=>{
+    container.innerHTML = ""
+    const pepito = Object.entries(array)
+    for(let i=0;i<pepito.length;i++){
+        let tr = document.createElement('tr');
+        tr.className='tabla'
+        tr.innerHTML = `<td>${array[i].category}</td><td>${array[i].revenue}</td><td>${array[i].attendance}</td>`
+        fragment7.appendChild(tr)
+    }
+    container.appendChild(fragment7)
+}
