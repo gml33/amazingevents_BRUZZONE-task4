@@ -234,3 +234,5 @@ export const tabla =(array, container)=>{
     }
     container.appendChild(fragment7)
 }
+
+
